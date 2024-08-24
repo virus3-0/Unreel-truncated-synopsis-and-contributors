@@ -1,0 +1,49 @@
+// ==UserScript==
+// @name Unreel truncated synopsis and contributors
+// @namespace http://tampermonkey.net/
+// @version 2.0
+// @author Arjya_2.0_reloaded
+// @description arjya404.netlify.com
+// @match https://remo.firetv.amazon.dev/content-matching*
+// @icon https://www.google.com/s2/favicons?sz=64&domain=fontawesome.com/icons/eye?f=classic&s=solid
+// @grant none
+// ==/UserScript==
+
+var input3 = document.createElement("button");
+input3.innerHTML = '<i class="fas fa-plus"></i> More';
+input3.className = 'open-more-button';
+input3.onclick = mp;
+input3.setAttribute("style", "font-size:14px;color:white;background:green;border:1.5px solid blue;position:fixed;top:5%;left:50%;transform: translate(-50%, -50%);padding: 5px 10px;cursor:pointer;");
+document.body.appendChild(input3);
+
+function mp() {
+    var links = document.getElementsByTagName("a");
+    var moreLinks = [];
+
+    for (var i = 0; i < links.length; i++) {
+        if (links[i].textContent.includes("More")) {
+            moreLinks.push(links[i]);
+        }
+    }
+    for (i = 0; i < moreLinks.length; i++) {
+        moreLinks[i].click();
+    }
+}
+
+document.onkeyup = function(e) {
+    if (e.ctrlKey && e.shiftKey && e.which == 83) {
+        var links = document.getElementsByTagName("a");
+        var moreLinks = [];
+
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].textContent.includes("More")) {
+                moreLinks.push(links[i]);
+            }
+        }
+        for (i = 0; i < moreLinks.length; i++) {
+            moreLinks[i].click();
+        }
+    }
+}
+
+console.log('completed');
